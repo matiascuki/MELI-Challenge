@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import {makeStyles, Paper, Grid, Container, TextField, Button} from '@material-ui/core';
-import getItems from './component'
+import listSellerItems from '../components/getItems';
 
 const useStyles = makeStyles({
     logo: {
@@ -8,18 +9,32 @@ const useStyles = makeStyles({
     },
     paperStyle: {
         padding : 20,
-        height: '30vh',
-        width: 280,
+        height: 280,
         margin: "20px auto",
         marginTop: '30vh'
     },
     btnStyle: {
-        margin:'1.5rem 0',   
+        marginTop: '15px '  
     }
 });
 
 const SearchOnMe = () => {
     const classes = useStyles();
+    const [ids, setIds] = useState() 
+
+    const onChangeHandler = e => {
+        setIds(e.target.value);
+      };
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        var idsArray = ids.split(" ")
+        idsArray.forEach(id => {
+            console.log(id + typeof (id));
+            
+          });
+
+    }   
 
     return (
         <form>
@@ -30,9 +45,8 @@ const SearchOnMe = () => {
                             className={classes.logo} alt="logo"></img> 
                         <h2>Buscar en Mercado Libre</h2>
                     </Grid>
-                        <TextField label='User ID' placeholder='Enter UserID' fullWidth required/>
-                        <TextField label='Site ID' placeholder='Enter SiteID' defaultValue='MLA' fullWidth required/>
-                        <Button type='submit' color='primary' variant="contained" className={classes.btnStyle} onClick={} fullWidth>Search</Button>
+                        <TextField label='User ID' placeholder='Enter UserID' onChange={onChangeHandler} fullWidth required/>
+                        <Button type='submit' color='primary' variant="contained" className={classes.btnStyle} onClick={handleClick} fullWidth>Search</Button>
                 </Paper>
             </Grid>
         </form>
