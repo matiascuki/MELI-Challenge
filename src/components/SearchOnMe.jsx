@@ -20,21 +20,16 @@ const useStyles = makeStyles({
 
 const SearchOnMe = () => {
     const classes = useStyles();
-    const [ids, setIds] = useState() 
+    const [id, setId] = useState() 
 
     const onChangeHandler = e => {
-        setIds(e.target.value);
+        setId (e.target.value);
       };
 
     const handleClick = (e) => {
         e.preventDefault();
-        var idsArray = ids.split(" ")
-        idsArray.forEach(id => {
-            console.log(id + typeof (id));
-            
-          });
-
-    }   
+        listSellerItems(id)
+    }
 
     return (
         <form>
