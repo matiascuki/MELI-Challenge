@@ -24,7 +24,7 @@ const SearchOnMe = () => {
 
     const onChangeHandler = e => {
         setId (e.target.value);
-      };
+    };
 
     const handleClick = (e) => {
         e.preventDefault();
